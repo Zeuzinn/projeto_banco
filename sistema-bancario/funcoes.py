@@ -1,3 +1,5 @@
+from registro import obter_data_e_hora
+
 def menu():
     print('\n=== BIG BANK ===\n')
     print('[1] - Depósito')
@@ -13,9 +15,11 @@ def depositar(saldo, extrato):
         return saldo  
     else:
         saldo += deposito
-        extrato.append(+deposito)
+        hora, dia = obter_data_e_hora()
+        extrato.append({'dinheiro': +deposito, 'hora': hora, 'dia': dia})
         print('Processando...')
-        print(f'Depósito R${deposito:.2f} efetuado com sucesso!')
+        print('Depósito efetuado com sucesso!')
+        saldo_atual(saldo)
         return saldo
 
 
@@ -33,16 +37,18 @@ def sacar(saldo, saque_diario, extrato):
     elif saque > saldo:
         print('Processando...')
         print('Saldo indisponível.')
-        print(f'Saldo atual R${saldo:.2f}')
+        saldo_atual(saldo)
 
-    else: 
+    else:
         saldo -= saque
-        extrato.append(-saque)
+        hora, dia = obter_data_e_hora()
+        extrato.append({'dinheiro': -saque, 'hora': hora, 'dia': dia})
         saque_diario -= 1
-        print('Processando...')
-        print('Saque realizado!')
+        print('Saque realizado com sucesso!')
         print('Saques disponíveis:', saque_diario)
-        return saldo, saque_diario
+        saldo_atual(saldo)
+
+    return saldo, saque_diario
 
 
 def exibir_extrato(extrato, saldo):
@@ -51,6 +57,12 @@ def exibir_extrato(extrato, saldo):
     else:
         print('=== TRANSAÇÕES ===')
         for valor in extrato:
-            print(f'R${valor:.2f}')
-            print()
+            print(f"R${valor['dinheiro']:.2f} \nData: {valor['dia']} \nHora: {valor['hora']}")
+            print('-' *30)
         print(f'\nSaldo atual: R${saldo:.2f}')
+
+
+def saldo_atual(saldo):
+    print()
+    print(f'Saldo atual R${saldo:.2f}')
+    print('-' *30)
