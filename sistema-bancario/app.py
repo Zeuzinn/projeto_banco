@@ -1,4 +1,4 @@
-from funcoes import *
+from funcoes import menu, depositar, sacar, exibir_extrato
 
 saque_diario = 3
 saldo = 0
