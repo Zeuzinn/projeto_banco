@@ -13,7 +13,9 @@ O desafio proposto pela **[DIO](https://web.dio.me/)** é criar um Sistema Banc�
 - Limite diário de 3 saques.
 - Exibição de extrato com data e hora das transações.
 - Interface de menu interativo no terminal.
-
+- Cadastro de clientes com validação de CPF (11 dígitos numéricos)
+- Criação de contas bancárias vinculadas ao CPF do cliente
+- Listagem de contas com nome do titular, agência, número da conta e data de criação
 ---
 
 ## 🧠 Conceitos Abordados 
@@ -31,10 +33,11 @@ Neste projeto, foram aplicados os seguintes recursos:
 
 ```
 📁 projeto_banco/
-├── app.py          |# Arquivo principal 
-├── funcoes.py      |# Lógica das operações bancárias
-├── registro.py     |# Gerenciamento de data e hora
-└── README.md       |# Documentação
+├── app.py                    |# Arquivo principal 
+├── operacoes_bancarias.py    |# Lógica das operações bancárias
+├── cadastros.py              |# Cadastro de usuários e contas
+├── registro.py               |# Gerenciamento de data e hora
+└── README.md                 |# Documentação
 ```
 ---
 
@@ -45,6 +48,10 @@ Neste projeto, foram aplicados os seguintes recursos:
 [1] - Depósito
 [2] - Saque
 [3] - Extrato
+[0] - Sair
+[4] - Criar Conta
+[5] - Criar Cliente
+[6] - Listar contas
 [0] - Sair
 
 Escolha uma operação: 1
