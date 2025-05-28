@@ -1,10 +1,13 @@
 from registro import obter_data_e_hora
 
 def criar_usuario(usuarios): 
+    """ Solicita dados do usuário e adiciona um novo cliente se o CPF não existir. """
+    
     cpf = input('Informe o CPF(apenas números): ')
     cpf_verificado = verificar_cpf(cpf)
     if not cpf_verificado:
-        return
+        print("CPF inválido. Cadastro cancelado.\n")
+        return 
     
     usuario = filtrar_cliente(cpf_verificado, usuarios)
     if usuario:
@@ -18,17 +21,21 @@ def criar_usuario(usuarios):
     cidade = input('Informe a Cidade e Estado: ')
     hora, data = obter_data_e_hora()
     usuarios.append({
-        'nome': nome, \
-        'cpf': cpf_verificado,\
-        'data_nascimento': data_nascimento, \
-        'rua': rua, \
-        'bairro': bairro, \
-        'cidade': cidade, 'hora': hora, 'data': data
+        'nome': nome, 
+        'cpf': cpf_verificado, 
+        'data_nascimento': data_nascimento, 
+        'rua': rua, 
+        'bairro': bairro, 
+        'cidade': cidade, 
+        'hora': hora, 
+        'data': data
     })   
     print('Cliente cadastrado!\n')
         
 
 def filtrar_cliente(cpf, usuarios):
+    """ Filtro a partir do CPF """
+    
     for usuario in usuarios:
         if usuario["cpf"] == cpf:
             return usuario
@@ -36,9 +43,13 @@ def filtrar_cliente(cpf, usuarios):
 
 
 def criar_conta(agencia, numero_conta, usuarios):
+    """ Solicita o CPF do usuário para poder criar uma conta, caso contrário não cria. """
+    
     cpf = input('Informe o CPF (apenas números): ')
     cpf_verificado = verificar_cpf(cpf)
+    
     if not cpf_verificado:
+        print("CPF inválido. Criação da conta cancelada.\n")
         return
     
     usuario = filtrar_cliente(cpf_verificado, usuarios)
@@ -65,6 +76,8 @@ def listar_contas(contas):
 
 
 def verificar_cpf(cpf):
+    """ Criar um sistema robusto para verificar CPF. """
+
     if not cpf.isdigit() or len(cpf) != 11:
         print('CPF inválido. \n')
         return None
