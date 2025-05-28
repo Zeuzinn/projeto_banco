@@ -1,6 +1,5 @@
 from registro import obter_data_e_hora
 
-
 def menu():
     print('\n=== BIG BANK ===\n')
     print('[1] - Depósito')
@@ -14,6 +13,7 @@ def menu():
 
 def depositar(saldo, extrato):
     deposito = int(input('Digite o valor do depósito R$'))
+    
     if deposito <= 0:
         print('O depósito deve ser maior que R$0,00')
         return saldo  
