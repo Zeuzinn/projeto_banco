@@ -7,8 +7,9 @@ class Cliente(ABC):
         self.estado = estado
         self.contas = []
 
-    def realizar_transacao(self, conta):
-        ...
+    def realizar_transacao(self, conta, transacao):
+        transacao.registrar(conta)
+        conta.historico.adicionar_transacao(transacao)
 
     @abstractmethod
     def adicionar_conta(self, conta): 
