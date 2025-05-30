@@ -1,45 +1,31 @@
-from operacoes_bancarias import menu, depositar, sacar, exibir_extrato
-from cadastros import criar_usuario, criar_conta, listar_contas
+from conta_corrente import ContaCorrente
+from pessoa_fisica import PessoaFisica
 
 
-saque_diario = 3
-AGENCIA = "0001"
-saldo = 0
-extrato = []
-usuarios = []
-contas = []
+pessoa = PessoaFisica('Ingrid Alves', '21-11-2002','12345678911','Antônio Padeiro, nº 15', 'Campo Grande', 'SP')
+pessoa2 = PessoaFisica('Robson de Souza', '07-07-1970','00033344470','Rua 7, nº 70', 'Jalapão', 'TO')
+
+conta = ContaCorrente(pessoa, 100, 1, "0137", 200)
+conta2 = ContaCorrente(pessoa2, 70, 70, "0137", 500)
+
+# Add Conta dentro da lista de contas
+pessoa.adicionar_conta(conta)
+pessoa2.adicionar_conta(conta2)
+print()
+
+conta.depositar(200)
+conta.sacar(150)
+
+conta2.depositar(700)
+conta2.sacar(350)
+
+pessoas = [pessoa, pessoa2]
+contas = [conta, conta2]
 
 
-while True:
-    menu()
-    opcao = input('Escolha uma operação: ')
-    print()
+# Exibe a lista de clientes
+for pessoa in pessoas:
+    pessoa.mostrar_clientes()
 
-    if opcao == '1':
-        saldo = depositar(saldo, extrato)
-    
-    elif opcao == '2':
-        saldo, saque_diario = sacar(saldo, saque_diario, extrato)
-    
-    elif opcao == '3':
-        exibir_extrato(extrato, saldo)
-    
-    elif opcao == '4':
-        numero_conta = len(contas)+1
-        conta = criar_conta(AGENCIA, numero_conta, usuarios)
-        
-        if conta:
-            contas.append(conta)
-    
-    elif opcao == '5':
-        criar_usuario(usuarios)
-
-    elif opcao == '6':
-        listar_contas(contas)
-    
-    elif opcao == '0':
-        print('Encerrando o programa... Até logo!')
-        break
-    
-    else:
-        print('Operação inválida! Escolha outra operação.')
+for conta in contas:
+    conta.exibir_extrato()
