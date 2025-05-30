@@ -1,8 +1,8 @@
 from cliente import Cliente
-from registro import Horario
+from data_hora import Horario
 
 class PessoaFisica(Cliente):
-    def __init__(self, nome: str, data_nascimento: str, cpf: str, rua_numero: str, cidade: str, estado: str):
+    def __init__(self, nome: str| None = None, data_nascimento: str | None = None, cpf: str| None = None, rua_numero: str| None = None, cidade: str| None = None, estado: str| None = None):
         
         super().__init__(rua_numero, cidade, estado)
         self.nome = nome
@@ -16,17 +16,21 @@ class PessoaFisica(Cliente):
             return None
         return cpf
 
-    # Add conta registrando horário
+    # Add conta e registra o horário
     def adicionar_conta(self, conta):
-        hora = Horario()
-        hora_atual, data_atual = hora.obter_horario()
-        self.contas.append(conta)
-        print(f'Olá, {self.nome}! Sua conta foi criada com sucesso.') 
-        print(f'Dia:{data_atual} - Hora:{hora_atual} \n')
+        if not conta:
+            print('Nenhuma conta foi adicionada.')
+        else:
+            hora = Horario()
+            hora_atual, data_atual = hora.obter_horario()
+            self.contas.append(conta)
+            print(f'Olá, {self.nome}! Sua conta foi criada com sucesso.') 
+            print(f'Dia:{data_atual} - Hora:{hora_atual} \n')
 
     def mostrar_clientes(self):
         for c in self.contas:
-            print(f"Nome: {self.nome} - CPF: {self.cpf} | \nAgência: {c._agencia} - Saldo R$:{c._saldo:,.2f}")
+            print(f"Nome: {self.nome} - CPF: {self.cpf}")
+            print(f"Agência: {c._agencia} - Saldo R$:{c._saldo:,.2f}")
             print()
             
     def __str__(self):
