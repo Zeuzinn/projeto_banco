@@ -1,24 +1,25 @@
 from abc import ABC, abstractmethod
 from cliente import Cliente
+from extrato import Historico 
 
 class Conta(ABC):
     def __init__(self, cliente: Cliente, saldo: float, numero: int, agencia: str):
-        self._cliente = cliente    
+        self._cliente = cliente     
         self._saldo = saldo
         self._numero = numero
-        self._agencia = agencia        
-        self._extrato = []
-    
+        self._agencia = agencia         
+        self.historico = Historico() 
+
     def saldo(self) -> float: 
-        return self._saldo
-    
+        return f"Cliente: {self._cliente.nome} - Saldo R${self._saldo:.2f}"
+
     @abstractmethod
     def depositar(self, valor: float):
         pass
-        
-    @abstractmethod    
+
+    @abstractmethod     
     def sacar(self, valor: float):
-        pass
+        pass    
 
     def __str__(self):
         return f"\nAgência: {self._agencia} | Nº: {self._numero} | Saldo: {self.saldo()}"
