@@ -7,4 +7,4 @@ class Horario:
         self._hora = hora if hora else agora.time()
 
     def obter_horario(self):
-        return f"{self._hora.strftime('%H:%M')} - {self._data.strftime('%d/%m/%Y')}"
+        return self._hora.strftime('%H:%M'), self._data.strftime('%d/%m/%Y')
