@@ -1,5 +1,6 @@
 from registro import obter_data_e_hora
 
+
 def menu():
     print('\n=== BIG BANK ===\n')
     print('[1] - Depósito')

@@ -1,12 +1,10 @@
-from datetime import datetime
+from datetime import datetime, date, time
 
-def obter_data_e_hora():
-    data_e_hora = datetime.now()
-    return data_e_hora.strftime('%H:%M'), data_e_hora.strftime('%d/%m/%Y')
+class Horario:
+    def __init__(self, data: date | None = None, hora: time | None = None):
+        agora = datetime.now()
+        self._data = data if data else agora.date()
+        self._hora = hora if hora else agora.time()
 
-
-
-
-
-
-
+    def obter_horario(self):
+        return f"{self._hora.strftime('%H:%M')} - {self._data.strftime('%d/%m/%Y')}"
