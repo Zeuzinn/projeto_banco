@@ -7,14 +7,7 @@ class PessoaFisica(Cliente):
         super().__init__(rua_numero, cidade, estado)
         self.nome = nome
         self.data_nascimento = data_nascimento
-        self.cpf = self.verificar_cpf(cpf)
-
-    # Verifica o CPF antes de passar pro SELF.CPF
-    def verificar_cpf(self, cpf: str):
-        if not cpf.isdigit() or len(cpf) != 11:
-            print('CPF inválido. O CPF deve possuir 11 dígitos \n')
-            return None
-        return cpf
+        self.cpf = cpf
 
     # Add conta e registra o horário
     def adicionar_conta(self, conta):
