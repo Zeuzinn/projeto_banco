@@ -3,7 +3,7 @@ from cliente import Cliente
 from data_hora import Horario 
 
 class ContaCorrente(Conta):
-    def __init__(self, cliente: Cliente, saldo : float, numero: int, agencia: str, limite_saque: float):
+    def __init__(self, cliente: Cliente, saldo: float, numero: int, agencia: str, limite_saque: float):
         super().__init__(cliente, saldo, numero, agencia)
         self._limite_saque = limite_saque 
 
