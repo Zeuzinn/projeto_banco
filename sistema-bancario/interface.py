@@ -19,5 +19,4 @@ class Saque(Transacao):
         self.valor = valor
 
     def registrar(self, conta):
-        print(f'Saque efetuado!')
         conta.sacar(self.valor)
