@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from conta import Conta
+from projeto_banco.bigbank.contas.conta import Conta
 
 class Transacao(ABC):
     

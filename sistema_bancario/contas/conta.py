@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from cliente import Cliente
-from extrato import Historico 
+from projeto_banco.sistema_bancario.clientes.cliente import Cliente
+from projeto_banco.sistema_bancario.utils.extrato import Historico 
 
 class Conta(ABC):
     def __init__(self, cliente: Cliente, saldo: float, numero: int, agencia: str):
