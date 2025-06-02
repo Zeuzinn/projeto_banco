@@ -2,60 +2,76 @@
 
 ## 🎯 Desafio 
 
-O desafio proposto pela **[DIO](https://web.dio.me/)** é criar um Sistema Bancário em Python para simular operações de **depósito**, **saque** e **extrato**, com limite diário de saques. 
+Desenvolvido como parte de um desafio proposto pela **[DIO - Digital Innovation One](https://web.dio.me/)**, este projeto simula um sistema bancário completo com **cadastro de clientes**, **contas bancárias**, e operações como **depósito**, **saque** e **extrato**, utilizando os princípios da **Programação Orientada a Objetos (POO)**.
+
 
 ---
 
 ## ⚙️ Funcionalidades 
 
-- Depósito com validação de valores positivos.
-- Saque limitado a R$500,00 por operação.
-- Limite diário de 3 saques.
-- Exibição de extrato com data e hora das transações.
-- Interface de menu interativo no terminal.
-- Cadastro de clientes com validação de CPF (11 dígitos numéricos)
-- Criação de contas bancárias vinculadas ao CPF do cliente
-- Listagem de contas com nome do titular, agência, número da conta e data de criação
+- ✅ Cadastro de clientes (com validação de CPF - 11 dígitos).
+- ✅ Criação automática ou manual de contas para clientes existentes.
+- ✅ Depósitos com validação de valores.
+- ✅ Saques limitados a R$500,00 por operação.
+- ✅ Exibição de extrato com data e hora de cada transação.
+- ✅ Interface de menu interativo no terminal.
+- ✅ Listagem de clientes e suas contas.
 ---
 
-## 🧠 Conceitos Abordados 
-Neste projeto, foram aplicados os seguintes recursos:
+## 🧠 Conceitos Aplicados
 
-- Estruturas condicionais (`if`, `else`, `elif`)
-- Laços de repetição com controle (`while`)
-- Listas e dicionários para controle de operações
-- Modularização com `import` de arquivos distintos
-- Manipulação de datas e horas com o módulo `datetime`
-- Trabalho com Data e Horas
+- Programação Orientada a Objetos (POO)
+  - Classes: `Pessoa`, `PessoaFisica`, `Conta`, `ContaCorrente`, `Historico`
+  - Encapsulamento e composição de objetos
+- Estruturas de controle (`if`, `for`, `while`)
+- Modularização do código com múltiplos arquivos e pastas
+- Geração automática de número de conta com `itertools.count`
+- Manipulação de datas e horas com `datetime`
+- Práticas de organização e manutenção do código
 ---
 
 ## 🗂️ Estrutura do Projeto
 
 ```
 📁 projeto_banco/
-├── app.py                    |# Arquivo principal 
-├── operacoes_bancarias.py    |# Lógica das operações bancárias
-├── cadastros.py              |# Cadastro de usuários e contas
-├── registro.py               |# Gerenciamento de data e hora
-└── README.md                 |# Documentação
+├── bigbank/
+│ ├── clientes/
+│ │ ├── pessoa.py
+│ │ └── pessoa_fisica.py
+│ ├── contas/
+│ │ ├── conta.py
+│ │ └── conta_corrente.py
+│ ├── historico/
+│ │ └── historico.py
+│ ├── transacoes/
+│ │ ├── transacao.py
+│ │ ├── deposito.py
+│ │ └── saque.py
+│ └── interface/
+│ └── menu_interacao.py
+├── main.py
+└── README.md
 ```
 ---
 
 ## ▶️ Exemplo de Uso
 ```
-=== BIG BANK ===
+=== BIG BANK - MENU ===
 
-[1] - Depósito
-[2] - Saque
-[3] - Extrato
-[0] - Sair
-[4] - Criar Conta
-[5] - Criar Cliente
-[6] - Listar contas
+[1] - Criar cliente
+[2] - Criar nova conta (apenas com CPF existente)
+[3] - Depositar
+[4] - Sacar
+[5] - Extrato
+[6] - Listar clientes
 [0] - Sair
 
 Escolha uma operação: 1
-Digite o valor do depósito R$1000
-Depósito efetuado com sucesso!
+CPF (Apenas dígitos): 12345678901
+Nome completo: Anderson Daronco
+...
+
+Cliente e conta criados com sucesso!
 ```
 ---
+
